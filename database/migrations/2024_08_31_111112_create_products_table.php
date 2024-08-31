@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->decimal('harga',8,2);
             $table->integer('jumlah_stok');
-            $table->timestamps();
         });
     }
 
