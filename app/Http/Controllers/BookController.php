@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProductContreller extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,25 +12,26 @@ class ProductContreller extends Controller
     public function index()
     {
         //
-        $product = Product::paginate(10);
-        return response()->json($products);
+        return Book::paginate(15);
     }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreBookRequest $request)
     {
         //
-        $product = Product::create($request->validated());
-        return response()->json($product,201);
+        $book = Book::create($request->validated());
+        return response()->json($book, 201);
     }
 
     /**
@@ -52,20 +53,21 @@ class ProductContreller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateBookRequest $request, Book $book)
     {
         //
-        $product->update($request->validated());
-        return response()->json($product);
+        // $book->update($request)
+        $book->update($request->validated());
+        return response()->json($book);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Book $book)
     {
         //
-        $product->delete();
-        return response()->json(null, 204);
+    $book->delete();
+    return response()->json(null, 204);
     }
 }
